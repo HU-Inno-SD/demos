@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  web1:
+    build:
+      context: "."
+      dockerfile: "./development/app/Dockerfile"
+    ports:
+      - "8091:8080"
+  web2:
+    build:
+      context: "."
+      dockerfile: "./development/app/Dockerfile"
+    ports:
+      - "8092:8080"
+  lb:
+    build: "./development/haproxy"
+    ports:
+      - "8090:80"
+      - "9000:9000"
+  #debug: #soms kan het handig zijn om even met een iets minder minimale container -in- het compose-netwerk te zitten
+    #image: debian
