@@ -1,4 +1,4 @@
-package nl.hu.sd.inno.basicboot.domain;
+package nl.hu.sd.inno.basicboot.counter.domain;
 
 public class Counter {
 

@@ -1,6 +1,6 @@
-package nl.hu.sd.inno.basicboot.presentation;
+package nl.hu.sd.inno.basicboot.counter.presentation;
 
-import nl.hu.sd.inno.basicboot.domain.Counter;
+import nl.hu.sd.inno.basicboot.counter.domain.Counter;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

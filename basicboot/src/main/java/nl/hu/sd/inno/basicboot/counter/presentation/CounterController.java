@@ -1,6 +1,6 @@
-package nl.hu.sd.inno.basicboot.presentation;
+package nl.hu.sd.inno.basicboot.counter.presentation;
 
-import nl.hu.sd.inno.basicboot.domain.Counter;
+import nl.hu.sd.inno.basicboot.counter.domain.Counter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
