@@ -14,6 +14,10 @@ public class Counter {
         return instance;
     }
 
+    public void reset() {
+        this.currentValue = 0;
+    }
+
 
     public int getCurrentValue() {
         return currentValue;
