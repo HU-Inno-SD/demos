@@ -4,19 +4,17 @@ import nl.hu.sd.inno.basicboot.domain.Counter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.function.EntityResponse;
 
 
 @RestController
 public class CounterController {
 
-    private static Counter counter = new Counter();
+    private final Counter counter = Counter.getInstance();
 
-    public record CounterDTO(Long id, int value) {
+    public record CounterDTO(int value) {
         public static CounterDTO fromCounter(Counter c) {
-            return new CounterDTO(c.getId(), c.getCurrentValue());
+            return new CounterDTO(c.getCurrentValue());
         }
     }
 

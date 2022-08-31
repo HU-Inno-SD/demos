@@ -1,25 +1,19 @@
 package nl.hu.sd.inno.basicboot.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
 public class Counter {
-
-    @Id
-    @GeneratedValue
-    private Long id;
 
     private int currentValue = 0;
 
-    public Counter(){
+    private Counter() {
 
     }
 
-    public Long getId() {
-        return id;
+    private static final Counter instance = new Counter();
+
+    public static Counter getInstance() {
+        return instance;
     }
+
 
     public int getCurrentValue() {
         return currentValue;
