@@ -5,12 +5,14 @@ import nl.hu.sd.inno.basicboot.shop.data.ProductRepository;
 import nl.hu.sd.inno.basicboot.shop.domain.Person;
 import nl.hu.sd.inno.basicboot.shop.domain.Product;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
+@Profile("init-data")
 public class InitialDataRunner implements CommandLineRunner {
 
     private final ProductRepository products;

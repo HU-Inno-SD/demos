@@ -43,4 +43,8 @@ public class Product {
     public void deliver(int nr) {
         this.nrAvailable += nr;
     }
+
+    public void order(int nr) {
+        this.nrAvailable -= nr;
+    }
 }

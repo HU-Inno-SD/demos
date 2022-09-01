@@ -4,18 +4,13 @@ Basis repository met wat simpele voorbeelden voor de eerste sprint van Inno.
 
 # Inhoud
 
-TODO: Een simpel domein, dat ook even gebruikt kan worden om:
-
-- Spring Annotaties
-- JPA Annotaties (Cascades!)
-- Loadbalancing
-
-te demo'en.
+Een kleine demo-applicatie, bestaande uit een kleine counter-demo, en een iets uitgebreidere 'winkel'.
 
 # Gebruik
 
 * ``mvn package``, of op een andere wijze het package doel draaien. Dit maakt de te-draaien-jar.
-* ``docker-compose up``, dit maakt 2 containers van deze applicatie, en draait ze samen met een loadbalancer
+* ``docker-compose up --build --force-recreate``, dit maakt 2 containers van deze applicatie, en draait ze samen met een loadbalancer
+  (``--build --force-recreate`` is technisch gezien de eerste keer niet nodig... maar anders komen code-updates niet betrouwbaar op je nieuwe container)
 
 Vervolgens kun je:
 * Naar http://localhost:8090 om de ge-loadbalancede versie te zien

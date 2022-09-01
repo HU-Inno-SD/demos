@@ -52,6 +52,12 @@ public class Order {
         return orderDate;
     }
 
+    public void process() {
+        for(OrderLine line: this.orderLines){
+            line.getProduct().order(line.nr);
+        }
+    }
+
 
     @Entity
     public static class OrderLine {

@@ -50,6 +50,7 @@ public class OrderService {
         }
 
         this.orders.save(o);
+        o.process();
 
         return o;
     }

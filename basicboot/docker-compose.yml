@@ -6,16 +6,34 @@ services:
       dockerfile: "./development/app/Dockerfile"
     ports:
       - "8091:8080"
+    environment:
+      - spring_profiles_active=docker
+    depends_on:
+      - pg
   web2:
     build:
       context: "."
       dockerfile: "./development/app/Dockerfile"
     ports:
       - "8092:8080"
+    environment:
+      - spring_profiles_active=docker,init-data
+    depends_on:
+      - pg
+      - web1
   lb:
     build: "./development/haproxy"
     ports:
       - "8090:80"
       - "9000:9000"
+  pg:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./development/db:/docker-entrypoint-initdb.d/
+    environment:
+      POSTGRES_PASSWORD: 1q2w3e!
   #debug: #soms kan het handig zijn om even met een iets minder minimale container -in- het compose-netwerk te zitten
     #image: debian
