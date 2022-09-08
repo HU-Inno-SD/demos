@@ -34,7 +34,7 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
     volumes:
-      - ./development/db:/docker-entrypoint-initdb.d/:ro
+      - ./development/db/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/:ro
     environment:
       POSTGRES_PASSWORD: 1q2w3e!
   #debug: #soms kan het handig zijn om even met een iets minder minimale container -in- het compose-netwerk te zitten
