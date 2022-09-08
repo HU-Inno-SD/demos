@@ -5,7 +5,7 @@ services:
       context: "."
       dockerfile: "./development/app/Dockerfile"
     ports:
-      - "8091:8080"
+      - "127.0.0.1:8091:8080"
     environment:
       - spring_profiles_active=docker
     depends_on:
@@ -15,7 +15,7 @@ services:
       context: "."
       dockerfile: "./development/app/Dockerfile"
     ports:
-      - "8092:8080"
+      - "127.0.0.1:8092:8080"
     environment:
       - spring_profiles_active=docker,init-data
     depends_on:
@@ -24,13 +24,13 @@ services:
   lb:
     build: "./development/haproxy"
     ports:
-      - "8090:80"
-      - "9000:9000"
+      - "127.0.0.1:8090:80"
+      - "127.0.0.1:9000:9000"
   pg:
     image: postgres
     restart: always
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - ./development/db:/docker-entrypoint-initdb.d/
     environment:
