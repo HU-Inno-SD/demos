@@ -1,5 +1,8 @@
 # Docker
 
+> ⚠️ READ THIS BEFORE USING DOCKER ⚠️
+> Please make sure to read the warning in the parent directory before proceeding.
+
 Basic Docker allows you to create images using Dockerfiles.
 These files contain definitions on how the image should be built.  
 

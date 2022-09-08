@@ -1,5 +1,8 @@
 # Docker Compose
 
+> ⚠️ READ THIS BEFORE USING DOCKER ⚠️
+> Please make sure to read the warning in the parent directory before proceeding.
+
 Docker compose is a wrapper for Docker that allows you to easily configure deployment of containers.
 Additionally, it provides some abstractions for inter-container communication.
 
