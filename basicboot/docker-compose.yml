@@ -22,10 +22,12 @@ services:
       - pg
       - web1
   lb:
-    build: "./development/haproxy"
+    image: haproxy:latest
     ports:
       - "127.0.0.1:8090:80"
       - "127.0.0.1:9000:9000"
+    volumes:
+      - ./development/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
   pg:
     image: postgres
     restart: always
