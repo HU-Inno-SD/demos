@@ -29,7 +29,7 @@ services:
     volumes:
       - ./development/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
   pg:
-    image: postgres
+    image: postgres:latest
     restart: always
     ports:
       - "127.0.0.1:5432:5432"
