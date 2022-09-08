@@ -37,5 +37,6 @@ services:
     volumes:
       - ./development/db/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/:ro
     env_file: ./development/db/.env
-  #debug: #soms kan het handig zijn om even met een iets minder minimale container -in- het compose-netwerk te zitten
+
+    #debug: #soms kan het handig zijn om even met een iets minder minimale container -in- het compose-netwerk te zitten
     #image: debian
