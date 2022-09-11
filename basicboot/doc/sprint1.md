@@ -29,6 +29,7 @@ hier zit een zekere mate van 'hopen dat het gaat werken'.
 
 De demo moet uitchecken + werken (zonder gedoe) op Windows, Linux en Mac.
 
+```puml
 @startuml
 actor user
 node web1 
@@ -44,3 +45,4 @@ web2 --> pg
 
 
 @enduml
+```
