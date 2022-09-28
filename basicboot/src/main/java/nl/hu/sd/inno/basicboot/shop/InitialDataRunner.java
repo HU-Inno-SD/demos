@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
-@Profile("init-data")
+@Profile("!no-data-init")
 public class InitialDataRunner implements CommandLineRunner {
 
     private final ProductRepository products;
