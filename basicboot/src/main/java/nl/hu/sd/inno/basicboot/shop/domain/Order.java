@@ -60,6 +60,7 @@ public class Order {
 
 
     @Entity
+    @Table(name = "orderlines")
     public static class OrderLine {
         @EmbeddedId
         private OrderLineId id;
