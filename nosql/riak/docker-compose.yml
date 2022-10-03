@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  primary:
+    image: basho/riak-kv
+    ports:
+      - "127.0.0.1:8087:8087"
+      - "127.0.0.1:8098:8098"  
+    environment:
+      - CLUSTER_NAME=riakdemo
+  replica:
+    image: basho/riak-kv
+    ports:
+      - "127.0.0.1:8088:8087"
+      - "127.0.0.1:8099:8098"    
+    depends_on:
+      - primary
+    environment:
+      - CLUSTER_NAME=riakdemo
+      - COORDINATOR_NODE=primary
+  others:
+    image: basho/riak-kv
+    deploy:
+      replicas: 3
+    depends_on:
+      - primary
+    environment:
+      - CLUSTER_NAME=riakdemo
+      - COORDINATOR_NODE=primary
