@@ -1,11 +1,3 @@
-# I like big data and I cannot lie - NoSQL
+# NoSQL demos
 
-## Inleiding
-
-## Budget
-
-## Opdracht
-
-## Evaluatie
-
-## Referenties
+Wups readme vergeten, die komt morgen
