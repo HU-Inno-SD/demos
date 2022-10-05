@@ -26,7 +26,7 @@ module.exports = {
 
         products = products.map(p => ({ id: parseInt(p.id), naam: p.naam, prijs: p.prijs }));
         persons = persons.map(p => ({ id: parseInt(p.id), naam: p.naam }));
-        orders = orders.map(o => ({id: parseInt(o.id), person: o.person, nr: parseInt(o.nr)}));
+        orders = orders.map(o => ({id: parseInt(o.id), person: o.person, product: o.product, nr: parseInt(o.nr)}));
 
         let objectOrders = []
         for (let o of orders) {
@@ -51,7 +51,7 @@ module.exports = {
                 if (p.naam === o.product) {
                     product = p;
                 }
-            }
+            }            
             matchingOrder.lines.push({
                 product: product,
                 nr: o.nr
