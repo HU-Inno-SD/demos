@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  scylla1:
+    image: scylladb/scylla
+    container_name: scylla1
+    command: ['--smp 1']
+    ports:
+      - "127.0.0.1:9042:9042"
+      - "127.0.0.1:10000:10000"
+  scylla2:
+    image: scylladb/scylla
+    container_name: scylla2
+    command: ['--smp 1', '--seeds=scylla1']
