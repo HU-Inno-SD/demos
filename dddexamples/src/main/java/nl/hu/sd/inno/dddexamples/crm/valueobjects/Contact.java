@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity(name="ContactValues")
 public class Contact {
-    @EmbeddedId //Een value object als ID is niet zo lastig, maar een GeneratedValue wel... dus omzeilen we dat maar
+    @EmbeddedId //Een value object als ID is niet zo lastig, maar een GeneratedValue wel... dus omzeilen we dat maar met UUIDs
     @Embedded
     private ContactId id;
 
@@ -19,7 +19,7 @@ public class Contact {
         this.id = new ContactId();
         this.name = name;
         this.address = address;
-//        this.contactDetails = details;
+        this.contactDetails = details;
     }
 
     @Embedded
@@ -40,9 +40,9 @@ public class Contact {
         return address;
     }
 
-//    public ContactDetails getContactDetails() {
-//        return contactDetails;
-//    }
+    public ContactDetails getContactDetails() {
+        return contactDetails;
+    }
 
     public ContactId getId() {
         return id;
