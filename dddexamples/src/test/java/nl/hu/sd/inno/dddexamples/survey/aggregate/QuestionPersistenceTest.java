@@ -36,4 +36,22 @@ public class QuestionPersistenceTest {
         assertEquals("Ja", found.getAnswers().get(0).getLabel());
         assertEquals("Nee", found.getAnswers().get(1).getLabel());
     }
+
+
+    @Test
+    public void canMoveAnswerBetweenQuestions() {
+        SurveyQuestion question = new SurveyQuestion("Alles ok?");
+        SurveyAnswer ja = new SurveyAnswer("Ja");
+        SurveyAnswer nee = new SurveyAnswer("Nee");
+        question.addAnswer(ja);
+        question.addAnswer(nee);
+
+        SurveyQuestion question2 = new SurveyQuestion("Tijd voor nog een test?");
+
+        question2.addAnswer(ja);
+
+        assertTrue(question2.getAnswers().contains(ja));
+        assertFalse(question.getAnswers().contains(ja));
+        assertEquals(question2, ja.getQuestion());
+    }
 }

@@ -32,6 +32,8 @@ public class SurveyAnswer {
     }
 
     void setQuestion(SurveyQuestion question) {
+        //SurveyAnswer is -niet- de aggregate-root, dus is niet verantwoordelijk voor de cnsistentie, daarom is deze methode niet publiek
+        //maar alleen voor consumpty binnen dit package (zodat Question z'n werk kan doen)
         this.question = question;
     }
 
