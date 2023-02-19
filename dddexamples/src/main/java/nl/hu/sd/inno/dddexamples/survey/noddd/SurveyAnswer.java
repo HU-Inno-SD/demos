@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.util.Objects;
 
-@Entity(name="noDDDAnswer")
+@Entity(name = "noDDDAnswer")
 public class SurveyAnswer {
 
     @Id
@@ -14,13 +14,14 @@ public class SurveyAnswer {
     private Long id;
 
     @ManyToOne
-    private SurveyQuestion question;
+    protected SurveyQuestion question;
 
     private String label;
 
-    protected SurveyAnswer(){}
+    protected SurveyAnswer() {
+    }
 
-    public SurveyAnswer(String label){
+    public SurveyAnswer(String label) {
         this.label = label;
     }
 
@@ -33,7 +34,13 @@ public class SurveyAnswer {
     }
 
     public void setQuestion(SurveyQuestion question) {
+        if (this.question != null && this.question.getAnswers().contains(this)) {
+            this.question.removeAnswer(this);
+        }
         this.question = question;
+        if (this.question != null) {
+            this.question.addAnswer(this);
+        }
     }
 
     public String getLabel() {

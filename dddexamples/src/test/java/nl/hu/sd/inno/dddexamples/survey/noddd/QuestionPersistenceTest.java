@@ -22,10 +22,8 @@ public class QuestionPersistenceTest {
         SurveyAnswer ja = new SurveyAnswer("Ja");
         SurveyAnswer nee = new SurveyAnswer("Nee");
 
-        question.getAnswers().add(ja); //Het risico is dus dat je deze regels overal handmatig in sync moet houden
-        question.getAnswers().add(nee);
-        ja.setQuestion(question);
-        nee.setQuestion(question);
+        question.addAnswer(ja); //Het risico is dus dat je deze regels overal handmatig in sync moet houden
+        question.addAnswer(nee);
 
         entities.persist(question);
 
@@ -38,5 +36,40 @@ public class QuestionPersistenceTest {
         assertEquals(2, found.getAnswers().size());
         assertEquals("Ja", found.getAnswers().get(0).getLabel());
         assertEquals("Nee", found.getAnswers().get(1).getLabel());
+    }
+
+
+    @Test
+    public void canMoveAnswerBetweenQuestions() {
+        SurveyQuestion question = new SurveyQuestion("Alles ok?");
+        SurveyAnswer ja = new SurveyAnswer("Ja");
+        SurveyAnswer nee = new SurveyAnswer("Nee");
+        question.addAnswer(ja);
+        question.addAnswer(nee);
+
+        SurveyQuestion question2 = new SurveyQuestion("Tijd voor nog een test?");
+
+        question2.addAnswer(ja);
+
+        assertTrue(question2.getAnswers().contains(ja));
+        assertFalse(question.getAnswers().contains(ja));
+        assertEquals(question2, ja.getQuestion());
+    }
+
+    @Test
+    public void canMoveAnswerBySettingQuestion() {
+        SurveyQuestion question = new SurveyQuestion("Alles ok?");
+        SurveyAnswer ja = new SurveyAnswer("Ja");
+        SurveyAnswer nee = new SurveyAnswer("Nee");
+        question.addAnswer(ja);
+        question.addAnswer(nee);
+
+        SurveyQuestion question2 = new SurveyQuestion("Tijd voor nog een test?");
+
+        ja.setQuestion(question2);
+
+        assertTrue(question2.getAnswers().contains(ja));
+        assertFalse(question.getAnswers().contains(ja));
+        assertEquals(question2, ja.getQuestion());
     }
 }

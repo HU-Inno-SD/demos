@@ -2,10 +2,11 @@ package nl.hu.sd.inno.dddexamples.survey.noddd;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-@Entity(name="noDDDQuestion")
+@Entity(name = "noDDDQuestion")
 public class SurveyQuestion {
 
     @Id
@@ -21,14 +22,30 @@ public class SurveyQuestion {
         return id;
     }
 
-    protected SurveyQuestion(){}
+    protected SurveyQuestion() {
+    }
 
-    public SurveyQuestion(String label){
+    public SurveyQuestion(String label) {
         this.label = label;
     }
 
     public List<SurveyAnswer> getAnswers() {
-        return answers;
+        return Collections.unmodifiableList(answers);
+    }
+
+    public void removeAnswer(SurveyAnswer a) {
+        this.answers.remove(a);
+        if (a.getQuestion() != null) {
+            a.setQuestion(null);
+        }
+    }
+
+    public void addAnswer(SurveyAnswer a) {
+        if (a.getQuestion() == this) {
+            this.answers.add(a);
+        } else {
+            a.setQuestion(this);
+        }
     }
 
     public String getLabel() {
