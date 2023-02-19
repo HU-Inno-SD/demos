@@ -18,11 +18,8 @@ public class QuestionPersistenceTest {
     @Test
     public void canPersistQuestions() {
         SurveyQuestion question = new SurveyQuestion("Alles ok?");
-        SurveyAnswer ja = new SurveyAnswer("Ja");
-        SurveyAnswer nee = new SurveyAnswer("Nee");
-
-        question.addAnswer(ja);
-        question.addAnswer(nee);
+        question.createAnswer("Ja");
+        question.createAnswer("Nee");;
 
         entities.persist(question);
 
@@ -41,17 +38,14 @@ public class QuestionPersistenceTest {
     @Test
     public void canMoveAnswerBetweenQuestions() {
         SurveyQuestion question = new SurveyQuestion("Alles ok?");
-        SurveyAnswer ja = new SurveyAnswer("Ja");
-        SurveyAnswer nee = new SurveyAnswer("Nee");
-        question.addAnswer(ja);
-        question.addAnswer(nee);
+        SurveyAnswer ja = question.createAnswer("Ja");
+        question.createAnswer("Nee");
+
 
         SurveyQuestion question2 = new SurveyQuestion("Tijd voor nog een test?");
-
-        question2.addAnswer(ja);
+        question.moveAnswerTo(question2, ja);
 
         assertTrue(question2.getAnswers().contains(ja));
         assertFalse(question.getAnswers().contains(ja));
-        assertEquals(question2, ja.getQuestion());
     }
 }
