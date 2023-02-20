@@ -2,7 +2,7 @@ version: "3.9"
 services:  
   pg:
     image: postgres
-    restart: always
+    restart: unless-stopped
     ports: 
       - 15432:5432
     volumes:
@@ -12,7 +12,9 @@ services:
       POSTGRES_PASSWORD: 1q2w3e!
   pgadmin:
     image: dpage/pgadmin4
-    restart: always
+    restart: unless-stopped
+    depends_on:
+      - pg
     ports:
       - 8091:80
     volumes:
