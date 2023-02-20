@@ -22,4 +22,4 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: student@hu.nl
       PGADMIN_DEFAULT_PASSWORD: 1q2w3e!
-      PGADMIN_SERVER_JSON_FILE: /db/servers.json #hmm, dit werkt nog niet. Onduidelijk waarom
+      PGADMIN_SERVER_JSON_FILE: /db/servers.json
