@@ -1,0 +1,25 @@
+version: "3.9"
+services:  
+  pg:
+    image: postgres
+    restart: unless-stopped
+    ports: 
+      - 15432:5432
+    volumes:
+      - ./pg/init:/docker-entrypoint-initdb.d/
+      - ./pg/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 1q2w3e!
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    depends_on:
+      - pg
+    ports:
+      - 8091:80
+    volumes:
+      - ./pgadmin:/db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: student@hu.nl
+      PGADMIN_DEFAULT_PASSWORD: 1q2w3e!
+      PGADMIN_SERVER_JSON_FILE: /db/servers.json
