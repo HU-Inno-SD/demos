@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import javax.persistence.EntityManager;
-
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
 class ContactPersistenceTest {
@@ -56,7 +54,9 @@ class ContactPersistenceTest {
     @Test
     public void canPersistContact() {
         ContactId id = c.getId();
-        assertEquals(c, this.entities.find(Contact.class, id));
+        Contact found = this.entities.find(Contact.class, id);
+        assertEquals(c, found);
+        assertEquals("Tom", found.getName().getFirstname());
     }
 
     @Test
@@ -64,5 +64,6 @@ class ContactPersistenceTest {
         List<Contact> results = this.entities.createQuery("select c from ContactValues c", Contact.class).getResultList();
         assertEquals(1, results.size());
         assertEquals(c, results.get(0));
+        assertEquals("Tom", results.get(0).getName().getFirstname());
     }
 }
