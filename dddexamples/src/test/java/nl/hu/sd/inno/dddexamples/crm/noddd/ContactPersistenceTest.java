@@ -45,7 +45,8 @@ class ContactPersistenceTest {
         Contact fresh = new Contact();
         fresh.setId(c.getId());
 
-        assertNotEquals(c.getFirstName(), fresh.getFirstName());
+        assertEquals( "Test", c.getFirstName());
+        assertEquals( null, fresh.getFirstName());
     }
 
     //@Test Hier zie je een voorbeeldje van een nadeel van die equals, dat is -meestal- niet de moeite om te fixen...
