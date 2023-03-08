@@ -4,6 +4,7 @@ import javax.persistence.Embeddable;
 import java.util.Objects;
 
 
+@Embeddable
 public class Name {
     private String firstname;
     private String initials;
