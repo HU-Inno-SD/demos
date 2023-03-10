@@ -1,9 +1,9 @@
 package nl.hu.sd.inno.dddexamples.crm.alternativeid;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import java.util.Objects;
 
 //Deze aanpak is niet 'de fraaiste', maar hij gebruikt gewoon geen ingewikkelde features van het framework. En van buitenaf

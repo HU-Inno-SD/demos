@@ -1,7 +1,7 @@
 package nl.hu.sd.inno.dddexamples.crm.valueobjects;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import java.util.Objects;
 
 @Embeddable

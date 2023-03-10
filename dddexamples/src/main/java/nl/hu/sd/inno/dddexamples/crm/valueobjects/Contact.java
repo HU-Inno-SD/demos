@@ -1,8 +1,8 @@
 package nl.hu.sd.inno.dddexamples.crm.valueobjects;
 
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
 import java.util.Objects;
 
 @Entity(name="ContactValues")

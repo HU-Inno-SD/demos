@@ -3,7 +3,7 @@ package nl.hu.sd.inno.dddexamples.crm.alternativeid;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 

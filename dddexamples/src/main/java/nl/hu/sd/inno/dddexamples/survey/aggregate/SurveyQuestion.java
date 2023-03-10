@@ -1,6 +1,6 @@
 package nl.hu.sd.inno.dddexamples.survey.aggregate;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
