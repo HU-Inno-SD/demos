@@ -1,26 +1,26 @@
 version: "3.9"
 services:
-  web1:
-    build:
-      context: "."
-      dockerfile: "./development/app/Dockerfile"
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8091:8080"
-    env_file: ./development/app/web1.env
-    depends_on:
-      - pg
-  web2:
-    build:
-      context: "."
-      dockerfile: "./development/app/Dockerfile"
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8092:8080"
-    env_file: ./development/app/web2.env
-    depends_on:
-      - pg
-      - web1
+#  web1:
+#    build:
+#      context: "."
+#      dockerfile: "./development/app/Dockerfile"
+#    restart: unless-stopped
+#    ports:
+#      - "127.0.0.1:8091:8080"
+#    env_file: ./development/app/web1.env
+#    depends_on:
+#      - pg
+#  web2:
+#    build:
+#      context: "."
+#      dockerfile: "./development/app/Dockerfile"
+#    restart: unless-stopped
+#    ports:
+#      - "127.0.0.1:8092:8080"
+#    env_file: ./development/app/web2.env
+#    depends_on:
+#      - pg
+#      - web1
   lb:
     image: haproxy:latest
     restart: unless-stopped
