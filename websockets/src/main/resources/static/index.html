@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello websockets</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.0/sockjs.js"
+            integrity="sha512-vYPluSy2C3STgAmc+JB2ET47zP83mJd9FNYXzIK5MBu4PthkjhInD4nKe7pjETGv6as0Md0LMfJwsI18c9vasw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"
+            integrity="sha512-tL4PIUsPy+Rks1go4kQG8M8/ItpRMvKnbBjQm4d2DQnFwgcBYRRN00QdyQnWSCwNMsoY/MfJY8nHp2CzlNdtZA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+<h1>Hello websockets!</h1>
+<h3>Server output</h3>
+<pre id="output">
+
+</pre>
+<div>
+    <label>Naam: <input name="sender" type="text"></label>
+    <label>Bericht: <input name="content" type="text"></label>
+    <button id="test-btn">Stuur</button>
+</div>
+<script>
+    let output = document.getElementById('output');
+    let naam = document.querySelector('input[name="sender"]')
+    let bericht = document.querySelector('input[name="content"]')
+
+    function connect() {
+        var socket = new SockJS('/gs-guide-websocket');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/chat', function (greeting) {
+                let result = JSON.parse(greeting.body);
+                console.log(result.content);
+                output.innerHTML = output.innerHTML + "\n" + `${result.sender} : ${result.content}`;
+            });
+        });
+    }
+
+    function sendTestMessage() {
+        stompClient.send("/app/new-message", {}, JSON.stringify({
+            sender: naam.value,
+            content: bericht.value
+        }));
+    }
+
+    connect();
+
+    document.getElementById('test-btn').addEventListener('click', () => {
+        sendTestMessage();
+    });
+</script>
+</body>
+</html>
