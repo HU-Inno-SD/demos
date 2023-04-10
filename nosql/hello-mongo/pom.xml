@@ -1,0 +1,20 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>nl.hu.ict.inno</groupId>
+        <artifactId>nosqldemos</artifactId>
+        <version>1</version>
+    </parent>
+
+    <artifactId>hello-mongo</artifactId>
+    <version>1</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,25 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>hello-pg</artifactId>
+    <version>1</version>
+    <parent>
+        <groupId>nl.hu.ict.inno</groupId>
+        <artifactId>nosqldemos</artifactId>
+        <version>1</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>3.0.4</version>
+        </dependency>
+    </dependencies>
+
+</project>

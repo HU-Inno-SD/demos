@@ -1,0 +1,97 @@
+version: "3.9"
+services:  
+  mongodb:    
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8092:8081
+    environment:      
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+  neo4j:
+    image: neo4j
+    restart: always
+    ports:
+      - 8093:7474
+      - 7687:7687
+    environment:
+      - NEO4J_AUTH=neo4j/1q2w3e!
+    volumes:
+      - ./hello-neo/import:/import
+  redis-primary:
+    image: redis
+    ports:
+      - "6379:6379"
+    command:
+      "/usr/local/bin/redis-server --save 60 1 --loglevel debug"
+  redis-replica:
+    image: redis
+    depends_on:
+      - redis-primary
+    ports:
+      - "6380:6379"
+    command:
+      "/usr/local/bin/redis-server /usr/local/etc/redis/redis.conf"
+    volumes:
+      - "./hello-redis/conf:/usr/local/etc/redis"
+  riak-primary:
+    image: basho/riak-kv
+    ports:
+      - "127.0.0.1:8087:8087"
+      - "127.0.0.1:8098:8098"
+    environment:
+      - CLUSTER_NAME=riakdemo
+  riak-replica:
+    image: basho/riak-kv
+    ports:
+      - "127.0.0.1:8088:8087"
+      - "127.0.0.1:8099:8098"
+    depends_on:
+      - riak-primary
+    environment:
+      - CLUSTER_NAME=riakdemo
+      - COORDINATOR_NODE=riak-primary
+  riak-others:
+    image: basho/riak-kv
+    deploy:
+      replicas: 3
+    depends_on:
+      - riak-primary
+    environment:
+      - CLUSTER_NAME=riakdemo
+      - COORDINATOR_NODE=riak-primary
+  scylla-primary:
+    image: scylladb/scylla
+    command: ['--smp 1']
+    ports:
+      - "127.0.0.1:9042:9042"
+      - "127.0.0.1:10000:10000"
+  scylla-replica:
+    image: scylladb/scylla
+    command: ['--smp 1', '--seeds=scylla-primary']
+  pg:
+    image: postgres:latest
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - ./hello-pg/init/:/docker-entrypoint-initdb.d/
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1q2w3e!
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    depends_on:
+      - pg
+    ports:
+      - 8091:80
+    volumes:
+      - ./hello-pg/init/:/db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: student@hu.nl
+      PGADMIN_DEFAULT_PASSWORD: 1q2w3e!
+      PGADMIN_SERVER_JSON_FILE: /db/servers.json

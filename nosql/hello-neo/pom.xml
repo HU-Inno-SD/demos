@@ -1,0 +1,19 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>nl.hu.ict.inno</groupId>
+        <artifactId>nosqldemos</artifactId>
+        <version>1</version>
+    </parent>
+
+    <artifactId>hello-neo</artifactId>
+    <version>1</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-neo4j</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
