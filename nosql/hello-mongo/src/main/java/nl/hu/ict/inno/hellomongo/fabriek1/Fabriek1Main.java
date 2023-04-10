@@ -1,13 +1,9 @@
-package nl.tomkemper.bep3.hellomongo.fabriek1;
+package nl.hu.ict.inno.hellomongo.fabriek1;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import nl.tomkemper.bep3.hellomongo.SomeEntity;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
-
-import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 public class Fabriek1Main {
 

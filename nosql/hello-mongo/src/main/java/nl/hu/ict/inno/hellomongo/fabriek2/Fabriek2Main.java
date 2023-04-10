@@ -1,4 +1,4 @@
-package nl.tomkemper.bep3.hellomongo.fabriek2;
+package nl.hu.ict.inno.hellomongo.fabriek2;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;

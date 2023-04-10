@@ -1,14 +1,11 @@
-package nl.tomkemper.bep3.hellomongo.fabriek3;
+package nl.hu.ict.inno.hellomongo.fabriek1;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class Bestelling {
-    private String id = UUID.randomUUID().toString();
 
-    private long klantId;
     private LocalDate datum = LocalDate.now();
     private List<BesteldArtikel> artikelen = new ArrayList<>();
 
@@ -18,10 +15,6 @@ public class Bestelling {
 
     public LocalDate getDatum() {
         return datum;
-    }
-
-    public Bestelling(Klant k){
-        this.klantId = k.getId();
     }
 
     public Bestelling add(int stuks, Artikel artikel){
@@ -34,29 +27,19 @@ public class Bestelling {
         return this;
     }
 
-    public long getKlantId() {
-        return klantId;
-    }
-
-    public String getId() {
-        return id;
-    }
-
     public static class BesteldArtikel {
-        private long artikelId;
+        private Artikel artikel;
         private int aantal;
         private double prijs;
-        private String naam;
 
         public BesteldArtikel(Artikel artikel, int aantal){
             this.aantal = aantal;
-            this.artikelId = artikel.getId();
+            this.artikel = artikel;
             this.prijs = artikel.getAdviesPrijs();
-            this.naam = artikel.getName();
         }
 
-        public long getArtikelId() {
-            return artikelId;
+        public Artikel getArtikel() {
+            return artikel;
         }
 
         public int getAantal() {

@@ -1,8 +1,6 @@
-package nl.tomkemper.bep3.hellomongo.fabriek2;
+package nl.hu.ict.inno.hellomongo.fabriek2;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class Bestelling {

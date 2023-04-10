@@ -1,4 +1,4 @@
-package nl.tomkemper.bep3.hellomongo.fabriek2;
+package nl.hu.ict.inno.hellomongo.fabriek1;
 
 public class Artikel {
     private long id;
