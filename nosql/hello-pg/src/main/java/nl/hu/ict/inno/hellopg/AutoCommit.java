@@ -1,5 +1,8 @@
 package nl.hu.ict.inno.hellopg;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,8 +10,10 @@ import java.sql.Statement;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class AutoCommit {
-    public static void main(String[] args) throws SQLException, InterruptedException {
+//@Component
+public class AutoCommit implements CommandLineRunner {
+    @Override
+    public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
         String url = "jdbc:postgresql://localhost/fabriek?user=postgres&password=1q2w3e!";

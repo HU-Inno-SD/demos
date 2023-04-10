@@ -79,6 +79,7 @@ services:
       - "127.0.0.1:5432:5432"
     volumes:
       - ./hello-pg/init/:/docker-entrypoint-initdb.d/
+      - ./hello-pg/data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1q2w3e!
