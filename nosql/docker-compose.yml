@@ -20,6 +20,7 @@ services:
       - 7687:7687
     environment:
       - NEO4J_AUTH=neo4j/1q2w3e!
+      - NEO4J_dbms_security_auth__minimum__password__length=2
     volumes:
       - ./hello-neo/import:/import
   pg:
