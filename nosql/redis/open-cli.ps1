@@ -1,1 +1,0 @@
-docker exec -it inno-redis-primary-1 redis-cli
