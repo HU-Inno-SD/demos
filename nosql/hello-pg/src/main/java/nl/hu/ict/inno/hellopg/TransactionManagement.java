@@ -20,7 +20,7 @@ public class TransactionManagement implements CommandLineRunner {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    //@Transactional //Halverwege de database resetten laat het nut van transactional zien. En ook Isolation. Dus de A & I van ACID
+    @Transactional //Halverwege de database resetten laat het nut van transactional zien. En ook Isolation. Dus de A & I van ACID
     public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
@@ -36,7 +36,7 @@ public class TransactionManagement implements CommandLineRunner {
         jdbcTemplate.execute("insert into besteldartikel(bestnr, artnr, aantal, bestelprijs)\n" +
                 "values(789, 122, 100, 1.50);");
 
-        System.out.println("Halverwege, maar in een transactie!");
+        System.out.println("Halverwege");
         scanner.nextLine();
 
         jdbcTemplate.execute("insert into besteldartikel(bestnr, artnr, aantal, bestelprijs)\n" +

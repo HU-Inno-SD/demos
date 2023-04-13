@@ -6,12 +6,12 @@ import org.springframework.data.neo4j.core.schema.Node;
 @Node
 public class Artikel {
     @Id
-    private long id;
+    private long artikelId;
     private String name;
     private double adviesPrijs;
 
-    public long getId() {
-        return id;
+    public long getArtikelId() {
+        return artikelId;
     }
 
     public String getName() {
@@ -23,7 +23,7 @@ public class Artikel {
     }
 
     public Artikel(long id, String name, double adviesPrijs) {
-        this.id = id;
+        this.artikelId = id;
         this.name = name;
         this.adviesPrijs = adviesPrijs;
     }

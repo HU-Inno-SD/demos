@@ -7,11 +7,11 @@ import org.springframework.data.neo4j.core.schema.Node;
 public class Klant {
 
     @Id
-    private long id;
+    private long klantId;
     private String name;
 
-    public long getId() {
-        return id;
+    public long getKlantId() {
+        return klantId;
     }
 
     public String getName() {
@@ -19,7 +19,7 @@ public class Klant {
     }
 
     public Klant(long id, String name){
-        this.id = id;
+        this.klantId = id;
         this.name = name;
     }
 }

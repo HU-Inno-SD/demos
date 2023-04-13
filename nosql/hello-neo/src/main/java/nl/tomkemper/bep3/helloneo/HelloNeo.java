@@ -26,7 +26,7 @@ public class HelloNeo implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.neoClient.query("MATCH (n) DETACH DELETE n");
+        this.neoClient.query("MATCH (n) DETACH DELETE n").run();
 
         Klant smit = new Klant(121, "Smit");
         Klant staal = new Klant(122, "Staal");

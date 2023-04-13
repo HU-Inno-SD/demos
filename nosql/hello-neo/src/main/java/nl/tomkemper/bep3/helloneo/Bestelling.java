@@ -10,7 +10,7 @@ import java.util.UUID;
 @Node
 public class Bestelling {
     @Id
-    private String id = UUID.randomUUID().toString();
+    private String bestellingId = UUID.randomUUID().toString();
 
     @Relationship(type = "KOPER", direction = Relationship.Direction.INCOMING)
     private Klant klant;
@@ -44,8 +44,8 @@ public class Bestelling {
         return klant;
     }
 
-    public String getId() {
-        return id;
+    public String getBestellingId() {
+        return bestellingId;
     }
 
 
