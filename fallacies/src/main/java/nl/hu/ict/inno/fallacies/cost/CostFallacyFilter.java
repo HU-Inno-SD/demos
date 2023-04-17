@@ -25,16 +25,6 @@ public class CostFallacyFilter implements Filter, ClientHttpRequestInterceptor {
     private int incomingRequests = 0;
     private int outgoingRequests = 0;
 
-    private long measureInputStream(InputStream in) throws IOException {
-        //Dit is echt evil vanuit performance perspectief, maar soit
-        long size = 0;
-        while (in.read() != -1) {
-            size++;
-        }
-
-        return size;
-    }
-
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         incomingRequests++;
