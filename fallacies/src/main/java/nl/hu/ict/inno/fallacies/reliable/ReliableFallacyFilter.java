@@ -18,6 +18,8 @@ import java.util.Random;
 @Profile("NetworkIsReliable")
 public class ReliableFallacyFilter implements Filter, ClientHttpRequestInterceptor {
 
+    private enum Failure {JustSucceed, Before, After}
+
     Logger logger = LoggerFactory.getLogger(ReliableFallacyFilter.class);
 
 
@@ -40,23 +42,52 @@ public class ReliableFallacyFilter implements Filter, ClientHttpRequestIntercept
         this.percentageFail = percentageFail;
     }
 
+    private Failure decideFailure() {
+        boolean shouldFail = this.random.nextInt(100) < this.percentageFail;
+        boolean failBefore = this.random.nextInt(100) < 50;
+        boolean failAfter = !failBefore;
+
+        if (!shouldFail) {
+            return Failure.JustSucceed;
+        } else {
+            if (failBefore) {
+                return Failure.Before;
+            } else {
+                return Failure.After;
+            }
+        }
+
+    }
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        if (this.random.nextInt(100) < this.percentageFail) {
-            logger.info("Server: The network is not reliable");
+        Failure f = decideFailure();
+
+        if (f == Failure.Before) {
+            logger.info("Server: The network is not reliable (before)");
             throw new RuntimeException("The network is not reliable");
-        } else {
-            filterChain.doFilter(servletRequest, servletResponse);
         }
+        filterChain.doFilter(servletRequest, servletResponse);
+        if (f == Failure.After) {
+            logger.info("Server: The network is not reliable (after)");
+            throw new RuntimeException("The network is not reliable");
+        }
+
     }
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        if (this.random.nextInt(100) < this.percentageFail) {
-            logger.info("Client: The network is not reliable");
+        Failure f = decideFailure();
+
+        if (f == Failure.Before) {
+            logger.info("Client: The network is not reliable (before)");
             throw new RuntimeException("The network is not reliable");
-        } else {
-            return execution.execute(request, body);
         }
+        ClientHttpResponse resp = execution.execute(request, body);
+        if (f == Failure.After) {
+            logger.info("Client: The network is not reliable (after)");
+            throw new RuntimeException("The network is not reliable");
+        }
+        return resp;
     }
 }

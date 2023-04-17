@@ -20,6 +20,7 @@ public class ReliableTemplateRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         for(int i=0; i<100; i++){
+            System.out.println("Call " + i);
             try{
                 template.getForEntity("http://localhost:8080/test", String.class);
             }catch (HttpServerErrorException serverError){
