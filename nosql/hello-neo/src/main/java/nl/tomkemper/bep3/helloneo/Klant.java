@@ -10,7 +10,7 @@ public class Klant {
 
     @Id
     @GeneratedValue //LET OP: dit is niet de jakarta-persistence @GeneratedId
-    private long klantId;
+    private Long klantId;
     private String name;
 
     public Adres getAdres() {
@@ -36,7 +36,7 @@ public class Klant {
     @Property("address.huisnr")
     private int huisnr;
 
-    public long getKlantId() {
+    public Long getKlantId() {
         return klantId;
     }
 

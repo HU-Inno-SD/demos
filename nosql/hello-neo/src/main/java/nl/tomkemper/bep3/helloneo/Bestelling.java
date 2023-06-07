@@ -13,7 +13,7 @@ import java.util.List;
 public class Bestelling {
     @Id
     @GeneratedValue //LET OP: dit is niet de jakarta-persistence @GeneratedId
-    private long bestellingId;
+    private Long bestellingId;
 
     @Relationship(type="ORDERS", direction = Relationship.Direction.INCOMING)
     private Klant klant;
