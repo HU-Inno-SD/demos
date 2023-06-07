@@ -46,3 +46,12 @@ services:
       PGADMIN_DEFAULT_EMAIL: student@hu.nl
       PGADMIN_DEFAULT_PASSWORD: 1q2w3e!
       PGADMIN_SERVER_JSON_FILE: /db/servers.json
+  scylla-primary:
+    image: scylladb/scylla
+    command: [ '--smp 1' ]
+    ports:
+      - "127.0.0.1:9042:9042"
+      - "127.0.0.1:10000:10000"
+  scylla-replica:
+    image: scylladb/scylla
+    command: [ '--smp 1', '--seeds=scylla-primary' ]

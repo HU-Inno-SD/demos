@@ -1,11 +1,13 @@
 package nl.tomkemper.bep3.helloneo;
 
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 
 @Node
 public class Artikel {
     @Id
+    @GeneratedValue
     private long artikelId;
     private String name;
     private double adviesPrijs;
