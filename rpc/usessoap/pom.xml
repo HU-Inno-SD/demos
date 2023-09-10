@@ -38,7 +38,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+<!-- Dit sloopt de mvn clean verify build, want deze plugin verplaatst de shared contracts. TODO: uitzoeken hoe je dat netjes oplost
+     Het kan echter wachten, want het is toch een demo project en niet iets waar we een volle deployment mee uitvoeren...
     <build>
         <plugins>
             <plugin>
@@ -46,6 +47,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>            
         </plugins>
-    </build>
+    </build> -->
 
 </project>

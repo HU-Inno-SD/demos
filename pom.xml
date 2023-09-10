@@ -1,0 +1,27 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.tomkemper.bep3</groupId>
+    <artifactId>demos-parent</artifactId>
+    <version>1</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <!-- Hmm, is die maven.compiler stuff nog wel nodig... -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version>
+    </properties>
+
+    <modules>
+        <module>basicboot</module>
+        <module>dddexamples</module>
+        <module>fallacies</module>
+        <module>messaging</module>
+        
+        <module>nosql</module>
+        <module>rpc</module>
+    </modules>
+
+
+</project>

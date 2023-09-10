@@ -1,8 +1,5 @@
 package nl.hu.ict.inno.reqack;
 
-import jakarta.persistence.Entity;
-
-
 public class Task {
 
     private Long id;
