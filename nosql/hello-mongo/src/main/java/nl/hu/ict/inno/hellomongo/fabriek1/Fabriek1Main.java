@@ -30,7 +30,19 @@ public class Fabriek1Main {
                         .add(3, diskettes)
                         .add(nietmachine));
 
+        smit.getBestellingen().add(
+                new Bestelling()
+                        .add(7, postits));
+
+
+
+        staal.getBestellingen().add(
+                new Bestelling()
+                        .add(3, postits));
+
+
         mongoOps.save(smit);
+        mongoOps.save(staal);
 
         System.out.println(mongoOps.findAll(Klant.class));
 
