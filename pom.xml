@@ -21,6 +21,7 @@
         
         <module>nosql</module>
         <module>rpc</module>
+        <module>threading</module>
     </modules>
 
 
