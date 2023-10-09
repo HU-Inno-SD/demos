@@ -1,4 +1,4 @@
-package nl.hu.sd.inno.badaggregate;
+package nl.hu.sd.inno.badaggregate.registrations;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +25,7 @@ public class QuestionController {
                                        @RequestParam(value = "page", required = true) int page,
                                        @RequestParam(value = "lang", required = true) String lang) {
 
-        List<Question> questions = this.questionService.getQuestions(page, lang);
+        List<Question> questions = this.questionService.getQuestions(registrationId, page, lang);
 //        Deze regel ontcommenten, en dan zie je hoe JPA/Hibernate soms een best lekke abstractie is.
 //        Let op: m'n punt is niet "Stoute JPA!", maar dat je vaak best een diep conceptueel begrip van je libraries
 //        nodig hebt om redelijkerwijs een probleem te debuggen.

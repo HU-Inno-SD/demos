@@ -1,4 +1,4 @@
-package nl.hu.sd.inno.badaggregate;
+package nl.hu.sd.inno.badaggregate.registrations;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

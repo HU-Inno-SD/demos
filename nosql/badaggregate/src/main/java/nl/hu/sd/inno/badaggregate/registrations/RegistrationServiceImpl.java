@@ -1,4 +1,4 @@
-package nl.hu.sd.inno.badaggregate;
+package nl.hu.sd.inno.badaggregate.registrations;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
