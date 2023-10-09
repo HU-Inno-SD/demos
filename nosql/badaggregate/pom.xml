@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>nl.hu.sd.inno</groupId>
-    <artifactId>dddexamples</artifactId>
+    <artifactId>badaggregate</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

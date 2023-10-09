@@ -37,6 +37,7 @@
         <module>hello-pg</module>
         <module>hello-mongo</module>
         <module>hello-neo</module>
+		<module>badaggregate</module>
 
     </modules>
 
