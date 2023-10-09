@@ -26,7 +26,10 @@ public class QuestionController {
                                        @RequestParam(value = "lang", required = true) String lang) {
 
         List<Question> questions = this.questionService.getQuestions(page, lang);
-        this.registrationService.markPage(registrationId, page);
+//        Deze regel ontcommenten, en dan zie je hoe JPA/Hibernate soms een best lekke abstractie is.
+//        Let op: m'n punt is niet "Stoute JPA!", maar dat je vaak best een diep conceptueel begrip van je libraries
+//        nodig hebt om redelijkerwijs een probleem te debuggen.
+//        this.registrationService.markPage(registrationId, page);
 
         return questions;
     }
