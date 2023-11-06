@@ -7,11 +7,14 @@ import org.springframework.stereotype.Component;
 public class Producer {
     private RabbitTemplate template;
 
-    public Producer(RabbitTemplate template){
+    public Producer(RabbitTemplate template) {
+
         this.template = template;
     }
 
-    public void sendMessage(SomeMessage message){
+    public void sendMessage(SomeMessage message) {
+
         this.template.convertAndSend("demo-queue", message);
+        this.template.convertSendAndReceiveAsType()
     }
 }

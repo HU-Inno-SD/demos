@@ -2,7 +2,7 @@ package nl.hu.sd.inno.basicboot.shop.domain;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
