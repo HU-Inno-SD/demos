@@ -27,6 +27,7 @@
         <module>messaging-patterns-producer</module>
         <module>messaging-patterns-consumer</module>
         <module>whutsupp</module>
+        <module>twophasecommitexample</module>
     </modules>
 
     <dependencies>

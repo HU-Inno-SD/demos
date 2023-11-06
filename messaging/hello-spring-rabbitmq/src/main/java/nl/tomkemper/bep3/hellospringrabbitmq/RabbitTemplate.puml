@@ -1,0 +1,17 @@
+@startuml
+
+class RabbitTemplate {
+
+- connectionFactory: ConnectionFactory
+
++ convertAndSend(routingKey: String, message: Object) : void;
+
++ convertSendAndReceiveAsType(routingKey: String, message: Object, responseType: Class<T>) : T;
+
+}
+
+note right of RabbitTemplate::convertSendAndReceiveAsType
+LOOK OUT! A TRAP!
+end note
+
+@enduml
